@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet} from 'react-native'
+import { View, Text, StyleSheet, Image} from 'react-native'
 import React from 'react'
 
 export default function Registro(props) {
@@ -8,7 +8,20 @@ export default function Registro(props) {
 
     return (
         <View>
-            <View><Text style={styles.textoTurno}>{turno}</Text></View>
+            <View style={styles.linha}>
+                <View style={styles.coluna}>
+                    <Text style={styles.textoTurno}>{turno}</Text>
+                </View>
+                <View style={{flex: 0.3}}>
+                    <Image
+                        style={styles.imagem}
+                        source={{
+                            uri: data?data[dia][turno]['icone']: null
+                        }}
+                    />
+                </View>
+            </View>
+
 
             <View>
                 <View style={styles.linha}>
@@ -93,6 +106,9 @@ const styles = StyleSheet.create({
         marginBottom: 20
     }, Logo: {
         width: 50,
+        height: 50,
+    }, imagem: {
+        width: 70,
         height: 50,
     }
 });
